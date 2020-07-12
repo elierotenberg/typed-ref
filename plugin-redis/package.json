@@ -42,7 +42,7 @@
     "redis": "^3.0.2",
     "ts-jest": "^26.1.1",
     "ts-node": "^8.10.2",
-    "typed-ref-core": "file:../dist/typed-ref-core-0.0.1.tgz",
+    "typed-ref-core": "0.0.1",
     "typedoc": "^0.17.8",
     "typescript": "^3.9.5"
   },
@@ -51,7 +51,7 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "typed-ref-core": "file:../dist/typed-ref-core-0.0.1.tgz",
+    "typed-ref-core": "0.0.1",
     "redis": "^3.0.2"
   }
 }

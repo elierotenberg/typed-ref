@@ -1,0 +1,39 @@
+{
+  "name": "typed-ref-core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "clean:typescript": "rm -rf build",
+    "build:typescript": "cpx \"src/**/*.d.ts\" build && tsc -p .",
+    "clean:typedoc": "rm -rf typedoc",
+    "build:typedoc": "typedoc --mode file --includeDeclarations --excludeExternals --out typedoc src ",
+    "test": "jest --maxWorkers=50",
+    "build": "npm run build:typescript && npm run build:typedoc"
+  },
+  "author": "Elie Rotenberg <elie@rotenberg.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/js-yaml": "^3.12.5",
+    "@types/node": "^14.0.22",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "cpx": "^1.5.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.1",
+    "ts-node": "^8.10.2",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "js-yaml": "^3.14.0",
+    "tslib": "^2.0.0"
+  }
+}

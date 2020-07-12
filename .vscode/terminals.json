@@ -1,0 +1,17 @@
+{
+  "autorun": true,
+  "terminals": [
+    {
+      "name": "typed-ref core",
+      "cwd": "[workspaceFolder]/core"
+    },
+    {
+      "name": "typed-ref plugin-fetch",
+      "cwd": "[workspaceFolder]/plugin-fetch"
+    },
+    {
+      "name": "typed-ref plugin-redis",
+      "cwd": "[workspaceFolder]/plugin-redis"
+    }
+  ]
+}

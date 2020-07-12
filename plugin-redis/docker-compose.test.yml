@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  typed-ref-plugin-redis-test:
+    image: redis:6
+    container_name: typed-ref-plugin-redis-test-redis
+    volumes:
+      - ./redis.test.conf:/usr/local/etc/redis/redis.conf:ro
+    ports:
+      - "2349:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf

@@ -41,3 +41,14 @@ export class Resolver<
     return await unref(parse(params));
   };
 }
+
+export const extend = <P>(
+  plugin: ResolverPlugin<P>,
+  transformParams: (params: P) => P,
+): ResolverPlugin<P> => ({
+  parse: (originalParams) => {
+    const params = plugin.parse(originalParams);
+    return transformParams(params);
+  },
+  unref: plugin.unref,
+});

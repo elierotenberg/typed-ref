@@ -1,4 +1,4 @@
-import { Resolver } from "../Ref";
+import { Resolver, extend } from "../Ref";
 import { FilePlugin, IFileRefParams } from "../plugins/FilePlugin";
 import { InlinePlugin, IInlineRefParams } from "../plugins/InlinePlugin";
 
@@ -84,6 +84,41 @@ describe("FilePlugin", () => {
     await expect(
       async () => await resolver.unref(invalidYmlRef),
     ).rejects.toBeTruthy();
+  });
+
+  test("json extend", async () => {
+    const jsonRef = {
+      $ref: {
+        kind: "file",
+        params: {
+          format: "json",
+          path: "src/__tests__/ref.json",
+        },
+      },
+    } as const;
+
+    const CustomFilePlugin = extend(FilePlugin, (params) => ({
+      ...params,
+      path: `${params.path}.alt`,
+    }));
+
+    const resolver = new Resolver<
+      "file",
+      {
+        readonly file: IFileRefParams;
+      }
+    >({
+      file: CustomFilePlugin,
+    });
+
+    const value = await resolver.unref(jsonRef);
+
+    expect(value).toEqual({
+      foo: "bar",
+      one: 1,
+      two: 2,
+      array: [],
+    });
   });
 
   test("json + yml", async () => {
